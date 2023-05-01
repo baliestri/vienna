@@ -1,0 +1,10 @@
+[profile "default"]
+  name = Bruno Sales
+  email = me@baliestri.dev
+  signingkey = B96575BD
+
+[profile "work"]
+  name = Bruno Sales
+  email = work@baliestri.dev
+  signingkey = B96575BD
+  path = "/home/baliestri/work"
