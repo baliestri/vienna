@@ -1,0 +1,130 @@
+# Copyright (c) Bruno Sales <me@baliestri.dev>. Licensed under the MIT License.
+# See the LICENSE file in the project root for full license information.
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[┏](#003543)[](#003543)$username\
+[](fg:#003543 bg:#DA627D)$directory\
+[](fg:#DA627D bg:#FCA17D)$git_branch$git_status\
+[](fg:#FCA17D bg:#76B367)$conda$cmake$dotnet$docker_context$golang$java$lua$nodejs$package$php$python$rust\
+[](fg:#76B367 bg:#83769c)$time\
+[](fg:#83769c bg:#33658A)$cmd_duration\
+[](fg:#33658A bg:#CD007F)[  ](fg:#FFFFFF bg:#CD007F)[](fg:#CD007F)
+[┗](#003543)$character"""
+
+
+[character]
+success_symbol = '[❯](#9A348E)'
+error_symbol = '[❯](#D60000)'
+vimcmd_symbol = '[❮](#FB6700)'
+
+[container]
+disabled = true
+
+[conda]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($environment) ]($style)'
+
+[cmake]
+symbol = '卑'
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[cmd_duration]
+style = 'fg:#FFFFFF bg:#33658A'
+format = '[ $duration ]($style)'
+
+[directory]
+style = 'fg:#FFFFFF bg:#DA627D'
+format = '[ $path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+
+[directory.substitutions]
+'Documents' = ' '
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+'Important  ' = '  '
+
+[docker_context]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol$context ]($style)'
+
+[dotnet]
+symbol = '.NET'
+style = 'fg:#FFFFFF bg:#76B367'
+version_format = '${raw}'
+format = 'via [$symbol($version) ]($style)'
+
+[elixir]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[erlang]
+disabled = true
+
+[git_branch]
+symbol = ''
+style = 'bold fg:#FFFFFF bg:#FCA17D'
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = 'bold fg:#FFFFFF bg:#FCA17D'
+format = '[($all_status$ahead_behind )]($style)'
+
+[golang]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[lua]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[package]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[php]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol$pyenv_prefix ($version)(|$virtualenv|) ]($style)'
+
+[rust]
+symbol = ''
+style = 'fg:#FFFFFF bg:#76B367'
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = '%R'              # Hour:Minute Format
+style = 'fg:#FFFFFF bg:#83769c'
+format = '[ ♥ $time ]($style)'
+
+[username]
+show_always = true
+format = '[ $user ]($style)'
+style_user = 'bg:#003543 fg:#00c983'
+style_root = 'bg:#003543 fg:#00c983'
