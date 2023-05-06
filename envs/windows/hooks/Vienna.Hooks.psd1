@@ -2,7 +2,7 @@
 # See the LICENSE file in the project root for full license information.
 
 @{
-  RootModule        = 'Hooks.psm1'
+  RootModule        = 'Vienna.Hooks.psm1'
   ModuleVersion     = '0.1.0'
   GUID              = 'cd48a519-34e7-45b4-a9b8-809b140f50a8'
 
