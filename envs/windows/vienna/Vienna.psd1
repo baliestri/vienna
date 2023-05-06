@@ -11,7 +11,7 @@
   Description       = 'A PowerShell module to manage the terminal.'
   PowerShellVersion = '7.0'
 
-  FunctionsToExport = '*-*'
+  FunctionsToExport = '*'
   AliasesToExport   = '*'
   ScriptsToProcess  = @('ViennaTypes.ps1')
 }

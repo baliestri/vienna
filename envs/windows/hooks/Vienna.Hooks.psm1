@@ -13,7 +13,8 @@
 .PARAMETER ScriptBlock
   The script block to be executed when the current directory changes.
 
-
+.EXAMPLE
+  PS C:\> Add-ChangeCurrentDirectoryHook { Write-Host "Current directory changed to $PWD" }
 #>
 function Add-ChangeCurrentDirectoryHook {
   param(

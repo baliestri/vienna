@@ -7,8 +7,8 @@ if ($null -eq $ProfileSymLink) {
 }
 
 Import-Module "$ProfileSymLink/vienna/Vienna.psd1"
-Import-Module "$ProfileSymLink/git/Git.psd1" -DisableNameChecking
-Import-Module "$ProfileSymLink/hooks/Hooks.psm1"
+Import-Module "$ProfileSymLink/git/Vienna.Git.psd1" -DisableNameChecking
+Import-Module "$ProfileSymLink/hooks/Vienna.Hooks.psd1"
 
 Register-Module "PSReadLine"
 Register-Module "Terminal-Icons"
