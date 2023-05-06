@@ -190,3 +190,56 @@ function Restart-PowerShell {
     exit
   }
 }
+
+function ~ { Set-Location $env:HOME }
+function .. { Set-Location ".." }
+function ... { Set-Location "..\.." }
+function .... { Set-Location "..\..\.." }
+function ..... { Set-Location "..\..\..\.." }
+function ...... { Set-Location "..\..\..\..\.." }
+function ....... { Set-Location "..\..\..\..\..\.." }
+function ll { Get-ChildItem -Force -ErrorAction SilentlyContinue }
+function la { Get-ChildItem -Force -ErrorAction SilentlyContinue -File }
+function l { Get-ChildItem -Force -ErrorAction SilentlyContinue -File }
+function vim { nvim $args }
+function vi { nvim $args }
+function touch { New-Item -ItemType File $args }
+function which {
+  $RequestedCommand = $args[0]
+  $FoundResult = Get-Command $RequestedCommand -ErrorAction SilentlyContinue
+  $Response = $null
+
+  switch ($FoundResult.CommandType) {
+    "Alias" {
+      $Response = [PSCustomObject]@{
+        CommandType = $FoundResult.CommandType
+        Definition  = "$($FoundResult.Name) -> $($FoundResult.Definition)"
+      }
+    }
+    "Application" {
+      $Response = [PSCustomObject]@{
+        CommandType = $FoundResult.CommandType
+        Path        = $FoundResult.Path
+      }
+    }
+    "Cmdlet" {
+      $Response = [PSCustomObject]@{
+        CommandType = $FoundResult.CommandType
+        Name        = $FoundResult.Name
+        Namespace   = $FoundResult.Source
+      }
+    }
+    "Function" {
+      $Response = [PSCustomObject]@{
+        CommandType = $FoundResult.CommandType
+        Name        = $FoundResult.Name
+        Namespace   = $FoundResult.Source
+      }
+    }
+    Default {
+      $Response = "which: no $RequestedCommand in ($env:PATH)"
+    }
+  }
+
+  return $Response
+}
