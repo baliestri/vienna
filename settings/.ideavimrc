@@ -1,0 +1,172 @@
+" Copyright (c) Bruno Sales <me@baliestri.dev>. Licensed under the MIT License.
+" See the LICENSE file in the repository root for full license text.
+
+set relativenumber
+set number
+
+" https://superuser.com/questions/622898/how-to-turn-off-the-bell-sound-in-intellij
+" https://stackoverflow.com/questions/63386803/how-to-turn-off-a-bell-in-intellij-idea
+set visualbell
+
+" https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
+set surround
+
+" https://youtrack.jetbrains.com/issue/VIM-1970
+set highlightedyank
+
+" https://youtrack.jetbrains.com/issue/VIM-959
+set ideamarks
+
+" https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples
+set ideajoin
+
+" https://youtrack.jetbrains.com/issue/VIM-1521
+set commentary
+
+" dia daa cia caa
+set argtextobj
+
+" die dae cie cae
+set textobj-entire
+
+" https://youtrack.jetbrains.com/issue/VIM-1042
+set NERDTree
+
+" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins#vim-paragraph-motion
+set vim-paragraph-motion
+
+" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins#vim-indent-object
+set textobj-indent
+
+set exchange
+set multiple-cursors
+
+let mapleader = " "
+
+sethandler <C-s> i:ide
+
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q gqap
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" Closing tabs
+nmap <leader>q :action CloseContent<cr>
+nmap <leader>Q :action ReopenClosedTab<cr>
+
+" To navigate between split panes
+nmap <leader>wo :action NextSplitter<cr>
+nmap <leader>wp :action PrevSplitter<cr>
+
+nmap ,s :action PrevSplitter<cr>
+
+" Full screen window
+nmap <leader>wf :action HideAllWindows<cr>
+
+" Splits manipulation
+nmap <leader>ws :action SplitHorizontally<cr>
+nmap <leader>wv :action SplitVertically<cr>
+nmap <leader>wc :action Unsplit<cr>
+nmap <leader>wC :action UnsplitAll<cr>
+nmap <leader>wd :action OpenEditorInOppositeTabGroup<cr>
+
+" NERDTree
+map <leader>nn :NERDTree<CR>
+map <leader>nf :NERDTreeFind<CR>
+
+" Navigation
+nmap <leader>h :action Back<cr>
+nmap <leader>l :action Forward<cr>
+nmap <leader>L :action RecentLocations<cr>
+nmap <leader>u :action FindUsages<cr>
+nmap <leader>C :action CallHierarchy<cr>
+nmap <leader>f :action GotoFile<cr>
+nmap <leader>c :action GotoClass<cr>
+nmap <leader>s :action GotoSymbol<cr>
+nmap <leader>m :action ToggleBookmark<cr>
+nmap <leader>; :action FileStructurePopup<cr>
+nmap <leader>M :action ActivateStructureToolWindow<cr>
+nmap <leader>d :action ShowErrorDescription<cr>
+nmap <leader>i :action GotoImplementation<cr>
+nmap <leader>U :action GotoSuperMethod<cr>
+nmap <leader>I :action SelectIn<cr>
+nmap <leader>e :action RecentFiles<cr>
+nmap <leader>a :action RecentChangedFiles<cr>
+nmap <leader>t :action GotoTest<cr>
+nmap <leader>p :action JumpToLastWindow<cr>
+nmap <leader>b :action ShowBookmarks<cr>
+
+" Useful Git actions
+"  nmap <leader>gb :action Git.Branches<cr>
+"  nmap <leader>gp :action Git.Pull<cr>
+"  nmap <leader>gu :action Git.Push<cr>
+"  nmap <leader>gr :action Git.Rebase<cr>
+"  nmap <leader>gm :action Git.Merge<cr>
+
+" VCS operations
+"  nmap <leader>yy :action Vcs.Show.Local.Changes<cr>
+"  nmap <leader>yp :action Vcs.QuickListPopupAction<cr>
+"  nmap <leader>ya :action Annotate<cr>
+"  nmap <leader>yl :action Vcs.Show.Log<cr>
+"  nmap <leader>yd :action Compare.LastVersion<cr>
+"  nmap <leader>yP :action Git.Pull<cr>
+"  nmap <leader>yr :action Git.ResolveConflicts<cr>
+"  nmap <leader>yo :action Github.Open.In.Browser<cr>
+
+nmap ,a :action GotoAction<cr>
+
+" Errors
+nmap <leader>x :action GotoNextError<cr>
+nmap <leader>X :action GotoPreviousError<cr>
+
+" Refactorings
+vmap T :action Refactorings.QuickListPopupAction<cr>
+vmap <leader>rm :action ExtractMethod<cr>
+nmap <leader>rr :action RenameElement<cr>
+nmap <leader>rg :action Generate<cr>
+nmap <leader>rI :action OptimizeImports<cr>
+
+" Inspection
+nmap <leader>rc :action InspectCode<cr>
+
+" Terminal
+nmap <leader>T :action ActivateTerminalToolWindow<cr>
+
+" Won't work in visual mode (with vmap) for some reason.
+" Use default map of <c-/> for that.
+nmap gcc :action CommentByLineComment<cr>
+nmap <c-/> :action CommentByLineComment<cr>
+
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+
+" Search
+nmap <leader>/ :action Find<cr>
+nmap <leader>\ :action FindInPath<cr>
+
+" Moving lines
+nmap [e :action MoveLineUp<cr>
+nmap ]e :action MoveLineDown<cr>
+
+" Moving statements
+nmap [s :action MoveStatementUp<cr>
+nmap ]s :action MoveStatementDown<cr>
+
+" Building, Running and Debugging
+nmap ,c :action CompileDirty<cr>
+nmap ,r :action Run<cr>
+nmap ,R :action RunAnything<cr>
+nmap ,b :action Debug<cr>
+nmap ,c :action RunClass<cr>
+nmap ,d :action DebugClass<cr>
+nmap ,t :action RerunTests<cr>
+nmap ,T :action RerunFailedTests<cr>
+nmap ,p :action ToggleLineBreakpoint<cr>
+nmap ,i :action ParameterInfo<cr>
+
+nmap <leader>w :w<cr>
